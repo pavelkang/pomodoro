@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+    <html>
+      <head>
+        <title>First Flask</title>
+	<link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.css')}}">
+      </head>
+      <body>
+	<header>
+	  <div class="navbar navbar-inverse">
+	      <a class="navbar-brand" href="/">Pomodoro</a>
+	      <ul class="nav navbar-nav">
+		{% if request.url == request.url_root %}
+		  <li class="active"><a href="/">Home</a></li>
+		{% else %}
+		  <li><a href="/">Home</a></li>
+		{% endif %}
+		{% if request.url[-3:] == "App" %}
+		  <li class="active"><a href="/">App</a></li>
+		{% else %}
+		  <li><a href="/App">App</a></li>
+		{% endif %}
+		{% if request.url[-3:] == "log" %}
+		  <li class="active"><a href="/">Log in</a></li>
+		{% else %}
+		  <li><a href="/log">Log in</a></li>
+		{% endif %}
+		<li><a href="/my">Evernote</a></li>
+		<li><a href="/test">Test</a></li>
+		<li><a href="/home2">Carousel</a></li>
+	      </ul>
+	  </div>
+	</header>
+        <div class="container">
+          {% block content %}
+          {% endblock %}
+        </div>
+      </body>
+    </html>

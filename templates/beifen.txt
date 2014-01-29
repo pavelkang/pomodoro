@@ -1,0 +1,52 @@
+
+{% extends "template.html" %}
+{% block content %}
+  <h1>Login</h1>
+  {% if error %}
+    <p class=error><strong>Error:</strong> {{ error }}
+  {% endif %}
+  <form action="{{url_for('log')" method=post>
+    <dl>
+      <dt>Username:
+	<dd><input type=text name=username value="{{ request.form.username }}">
+      <dt>Password:
+      <dd><input type=password name=password>
+    </dl>
+    <p><input type=submit value=Login>
+    </form>
+{% endblock %}
+
+
+
+
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Kai Kang</title>
+    <link rel="stylesheet" type="text/css"
+     href="{{ url_for('static', filename='css/my_style.css')}}">
+  </head>
+  <body>
+
+    <div class="Name"><h1>Kai Kang</h1></div>
+
+    <blockquote> My name is <em>Kai Kang</em>, I am a student from <a href="http://www.cmu.edu"> Carnegie Mellon University </a>. </blockquote>
+
+    <div class = "number"> Phone number </div>
+    <h2 id="number">
+      My phone number is 12345678
+    </h2>
+
+    <p>sdjf lkjsdf sdlf jsd fs sdjf lkjsdf sdlf jsd fs sdjf lkjsdf sdlf jsd fs sdjf lkjsdf sdlf jsd fs sdjf lkjsdf sdlf jsd fs
+      sdjf lkjsdf sdlf jsd fs sdjf lkjsdf sdlf jsd fs sdjf lkjsdf sdlf jsd fs sdjf lkjsdf sdlf jsd fs sdjf lkjsdf sdlf jsd fs
+      sdjf lkjsdf sdlf jsd fs sdjf lkjsdf sdlf jsd fs sdjf lkjsdf sdlf jsd fs</p>
+
+    <div class="Address">Morewood E Tower, Carnegie Mellon University, Pittsburgh, PA</div>
+  </body>
+</html>

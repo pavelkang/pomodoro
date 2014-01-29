@@ -1,0 +1,45 @@
+{% extends "template.html" %}
+{% block content %}
+    <h2>Pomodoro App</h2>
+  {% if get_flashed_messages() %}
+  {% for message in get_flashed_messages() %}
+    <div class=flash>
+      {{ message }}
+    </div>
+  {% endfor %}
+  {% endif %}
+<!-- Countdown -->
+  <div class="countdown">
+    <link rel="stylesheet" href=" {{ url_for('static', filename='css/flipclock.css') }} ">
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+		<script src="../static/js/flipclock/libs/base.js"></script>
+		<script src="../static/js/flipclock/flipclock.js"></script>
+		<script src="../static/js/flipclock/faces/counter.js"></script>
+		<script src="../static/js/flipclock/faces/hourlycounter.js"></script>
+		<script src="../static/js/flipclock/faces/dailycounter.js"></script>
+		<script src="../static/js/flipclock/faces/minutecounter.js"></script>
+		<script src="../static/js/flipclock/faces/twentyfourhourclock.js"></script>
+		<script src="../static/js/flipclock/faces/twelvehourclock.js"></script>
+    <div class="clock" style="margin:2em;position:fixed;top:15%;left:38%;"></div>
+    <div class="message"></div>
+    <script type="text/javascript">
+      var clock;
+
+      $(document).ready(function() {
+      var clock;
+
+      clock = $('.clock').FlipClock(10, {
+      clockFace: 'MinuteCounter',
+      //autoStart: false
+      countdown: true,
+      callbacks: {
+      stop: function() {
+      $('.message').html('The clock has stopped!')
+      }
+      }
+      });
+      });
+      </script>
+
+  </div>
+{% endblock %}

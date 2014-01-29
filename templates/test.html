@@ -1,0 +1,23 @@
+{% extends "template.html" %}
+{% block content %}
+<script src="{{url_for('static', filename='js/jquery.min.js')}}"></script>
+<script src="{{url_for('static', filename='js/my.js')}}"></script>
+
+<h2>
+  This is a test page. We are testing jQuery right now.
+</h2>
+<p>
+  <a class="btn btn-lg btn-success" role="button" id="button" onclick="add_number()"> Test Button </a>
+</p>
+<form action="" method=post>
+  <dl>
+    <dt>Adder 1:
+      <dd><input type=number  value="{{ request.form.username }}" id="add1">
+	<dt>Adder 2:
+	  <dd><input type=number id="add2">
+  </dl>
+</form>
+
+
+
+{% endblock %}

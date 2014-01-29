@@ -1,0 +1,23 @@
+# Written by Jeffrey Liu
+# this will return the url of the request page
+import sys
+# sys.path.insert(0, 'lib/evernote/api')
+
+# from lib import evernote.edam.userstore.constants as UserStoreConstants
+# from lib import evernote.edam.type.ttypes as Types
+# from lib import evernote.edam.notestore.ttypes as NoteStoreTypes
+# from lib import evernote.api.client
+# from lib import evernote
+import client
+
+def getURL():
+    client = client.EvernoteClient(
+                consumer_key = 'jeff95723',
+                consumer_secret = '12e44f902d948991',
+                sandbox = True
+            )
+
+    # change localhost to the actual return page
+    request_token = client.get_request_token('http://localhost')
+
+    return client.get_authorize_url(request_token)
