@@ -1,0 +1,28 @@
+{% extends "template.html" %}
+  <head>
+    <title> Evernote </title>
+  </head>
+{% block content %}
+  <h1 style="color:#444444;border-radius:10px;" > Evernote Pomodoro</h1>
+
+  {% if error %}
+    <p class=error><strong>Error:</strong> {{ error }}
+  {% endif %}
+
+  {% if url %}
+    <p>
+      <a class="btn btn-lg btn-success" href={{url}} role="button">Authorize >></a>
+    </p>
+  {% else %}
+    <p>
+      <a class="btn btn-lg btn-success" href="http://www.google.com" role="button">Authorize >></a>
+    </p>
+  {% endif %}
+
+{% endblock %}
+
+<!--
+  <form action="http://www.google.com">
+    <input type="submit" value="Authorize">
+  </form>
+-->

@@ -1,3 +1,5 @@
+# oauth_verifier is different every time E15F1E72E60D985F48AD6BFCF46D1F5E
+# oauth_token is different
 from flask import *
 from functools import wraps
 import sys, os
@@ -36,31 +38,27 @@ def new():
 
 @app.route('/App') # App URL
 def App():
-    if len(request.url) > 40:
+    return render_template('App.html', messages=['112'])
+    """
+    if "oauth_verifier" in request.url:
         authurl = request.url
         auth_token = get_auth_token(request_token, authurl)
         authorize_data = authorize(auth_token)
         session["auth_token"] = authorize_data[1]
         message = authorize_data[0]
-        print "---------------------length > 40----------------------"
         try:
-            flash(message)
+            return render_template('App.html', messages=["112"])#message)
         except:
             flash(sys.exc_info()[0])
-            flash("I am running on Local")
+            # flash("I am running on Local")
     else:
         pass
     return render_template('App.html')
-
+    """
 @app.route('/hello') # hello URL
 @login_required
 def hello():
-    # g.db = connect_db()
-    # cur = g.db.execute('select rep_name, amount from reps')
-    # sales = [dict(rep_name=row[0], amount=row[1]) for row in cur.fetchall()]
-    # g.db.close()
     return render_template('hello.html')
-
 
 @app.route('/logout')
 def logout():
@@ -68,10 +66,10 @@ def logout():
     flash('You were logged out')
     return redirect(url_for('log'))
 
-@app.route('/my') # hello URL
-def my():
+@app.route('/auth') # auth URL
+def auth():
     url = None
-    return render_template('my.html', url=goto_auth_url)
+    return render_template('auth.html', url=goto_auth_url)
 
 @app.route('/log', methods=['GET','POST'])
 def log():

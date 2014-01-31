@@ -17,36 +17,24 @@
 {% endblock %}
 
 
-
-
-
-
-
-
-
-
-<!DOCTYPE html>
-<html>
-  <head>
-    <title>Kai Kang</title>
-    <link rel="stylesheet" type="text/css"
-     href="{{ url_for('static', filename='css/my_style.css')}}">
-  </head>
-  <body>
-
-    <div class="Name"><h1>Kai Kang</h1></div>
-
-    <blockquote> My name is <em>Kai Kang</em>, I am a student from <a href="http://www.cmu.edu"> Carnegie Mellon University </a>. </blockquote>
-
-    <div class = "number"> Phone number </div>
-    <h2 id="number">
-      My phone number is 12345678
-    </h2>
-
-    <p>sdjf lkjsdf sdlf jsd fs sdjf lkjsdf sdlf jsd fs sdjf lkjsdf sdlf jsd fs sdjf lkjsdf sdlf jsd fs sdjf lkjsdf sdlf jsd fs
-      sdjf lkjsdf sdlf jsd fs sdjf lkjsdf sdlf jsd fs sdjf lkjsdf sdlf jsd fs sdjf lkjsdf sdlf jsd fs sdjf lkjsdf sdlf jsd fs
-      sdjf lkjsdf sdlf jsd fs sdjf lkjsdf sdlf jsd fs sdjf lkjsdf sdlf jsd fs</p>
-
-    <div class="Address">Morewood E Tower, Carnegie Mellon University, Pittsburgh, PA</div>
-  </body>
-</html>
+    <div class=flash>
+      <form class="navbar-form navbar-left" role="search">
+	<div id="image1" class="panel panel-primary">
+	  <div class="panel-heading"><h3 class="panel-title">Fundamentals of Cooking</h3></div>
+	  <div class="panel-body">
+	  <img src="{{url_for('static', filename='img/0.png')}}" style="width:15%; height:15%;"/>
+	  <span id="add_tomato" class="btn-group">
+	    <button type="button" class="btn btn-default" >+</button>
+	  </span>
+	  <span id="minus_tomato">
+	    <button type="button" class="btn btn-default" >-</button>
+	  </span>
+	  <span id="task_text">
+	    Specify Task Content:
+	  </span>
+	  <input type="text"></input>
+	  </div>
+	</div>
+      </form>
+    </div>
+    <ul class="space"></ul>
