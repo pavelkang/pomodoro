@@ -21,6 +21,7 @@ var current_status = 1; // 1 is working; 0 is taking a break
 var work_duration = 5; // in seconds
 var rest_duration = 3;
 
+
 var process = function(l, indices) {
     var result = [];
     for (var i =0; i< indices.length; i++) {
@@ -59,8 +60,6 @@ var create_list_group_item = function() {
     }
 }
 
-
-
 var activate = function(task_number){
     var task_to_act_text = '#task{0}'.format(task_number);
     $(task_to_act_text).attr('class', 'list-group-item active');
@@ -90,7 +89,14 @@ var labelViaRest = function() {
 }
 
 var descriptionViaRest = function() {
-    $("h4").html("");
+    $("h4").html(" ");
+}
+
+var make_finish_button = function() {
+    $("#button-group a").first().attr("class", "btn btn-success");
+    $("#button-group a").first().attr("href", "/finish");
+    $("#button-group a").first().html("Finish");
+    $("#button-group a").last().remove();
 }
 
 var next_task_button = function() {
@@ -109,6 +115,14 @@ var next_task_button = function() {
     }
     create_mainLabel(current_task, current_subtask);
     create_description(current_task, current_subtask);
+    if (current_task == name_of_nodes.length-1) {
+	// the last task
+	// test if the current sub task is the last sub task
+	var max = all_subtasks[current_task].length;
+	if (current_subtask == max-1) {
+	    make_finish_button();
+	}
+    }
 }
 
 var give_up_button = function() {
@@ -116,6 +130,12 @@ var give_up_button = function() {
 }
 
 var clock_stop = function(){
+    if (current_task == name_of_nodes.length-1) {
+	var max = all_subtasks[current_task].length;
+	if (current_subtask == max-1) {
+	    clock.stop();
+	}
+    }
     current_status = 1- current_status; // change status
     activate(current_task);
     if (current_task != 0) { deactivate(current_task-1);}
@@ -131,7 +151,6 @@ var clock_stop = function(){
 	clock.start();
 	next_task_button();
     }
-
 }
 
 $(document).ready( function() {
