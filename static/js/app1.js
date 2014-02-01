@@ -100,6 +100,7 @@ var make_finish_button = function() {
 }
 
 var next_task_button = function() {
+    clock.setTime(work_duration);
     //TODO
     var max_possible_subtasks = all_subtasks[current_task].length;
     if ( current_subtask < max_possible_subtasks-1 ) {
