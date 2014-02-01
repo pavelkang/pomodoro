@@ -38,7 +38,8 @@ def new():
 
 @app.route('/App') # App URL
 def App():
-    return render_template('App.html', messages=['112'])
+    messages = ["112", "122", "123", "132"]
+    return render_template('App.html', messages=messages, messages_range=range(len(messages)))
     """
     if "oauth_verifier" in request.url:
         authurl = request.url
@@ -59,6 +60,10 @@ def App():
 @login_required
 def hello():
     return render_template('hello.html')
+
+@app.route('/App1') # App1 URL
+def App1():
+    return render_template('App1.html')
 
 @app.route('/logout')
 def logout():

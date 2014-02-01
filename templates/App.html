@@ -22,17 +22,13 @@
       addMultipleNodes();
     </script>-->
 
-
-<ul class="space">
-  {% for message in messages %}
+<ul class="space" style="list-style-type: none;">
+  {% for message in messages_range %}
   <script type="text/javascript">
-    addNode();
+    addNumberOfNodes();
+    addNode({{message}});
   </script>
   {% endfor %}
 </ul>
-<!--
-<script src="{{url_for('static', filename='js/jquery.min.js')}}"></script>
-<script src="{{url_for('static', filename='js/add_tomato.js')}}"></script> -->
-
 
 {% endblock %}
