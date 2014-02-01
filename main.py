@@ -61,6 +61,10 @@ def App():
 def hello():
     return render_template('hello.html')
 
+@app.route('/signup') # sign-up URL
+def signup():
+    return render_template('signup.html')
+
 @app.route('/App1') # App1 URL
 def App1():
     return render_template('App1.html')
