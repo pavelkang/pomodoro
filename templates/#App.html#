@@ -16,7 +16,7 @@
     {%set add_tomato_left = "50%" %}
     <!--
     <span id="add_task">
-      <button type="button" class="btn btn-default" >Add Task</button>
+      <button type="button" class="btn btn-defau lt" >Add Task</button>
     </span>
     <script type="text/javascript">
       addMultipleNodes();

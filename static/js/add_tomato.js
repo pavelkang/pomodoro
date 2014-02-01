@@ -22,15 +22,16 @@ function preload(arrayOfImages) {
 	});
     }
 
-var number_of_tomato = [];
-var number_of_nodes = 0;
+var number_of_tomato = []; // stores as a 2-D list
+var all_subtasks = [];  // stores as a 2-D list
+var number_of_nodes = 0;  // number of tasks
 var img0 = "static/img/0.png";
 var img1 = "static/img/1.png";
 var img2 = "static/img/2.png";
 var img3 = "static/img/3.png";
 var img4 = "static/img/4.png";
 var img5 = "static/img/5.png";
-var colors = ["primary", "danger", "success", "warning"]; //Hongyu will update this
+var colors = ["blue", "red", "green", "yellow", "lightblue"]; //Hongyu will update this
 // Preload all the images
 preload([img0, img1, img2, img3, img4, img5]);
 
@@ -76,7 +77,7 @@ var addNode = function(number) {
       <form class="navbar-form navbar-left" role="search">\
 	<div id="image{0}" class="panel {1}">\
 	  <div class="panel-heading"><h3 class="panel-title">Fundamentals of Cooking</h3></div>\
-	  <div class="panel-body">\
+	  <div class="panel-body" style="width:150%;">\
 	  <img src="static/img/0.png" />\
 	  <span id="add_tomato" class="btn-group">\
 	    <button type="button" class="btn btn-default" >+</button>\
@@ -96,16 +97,47 @@ var addNode = function(number) {
     $(".space").append(task);
 }
 
-var detectClick = function(order_of_task) {
+var addSubtask = function(event) {
+    // add subtask to all_subtasks
+    var task_content_text = "#image{0} input".format(event.data.number);
+    var task_content = $(task_content_text).val()
+    all_subtasks[event.data.number].push(task_content);
+    $(task_content_text).val("");
+}
+
+var minusSubtask = function(event) {
+    // pop subtask to all_subtasks
+    all_subtasks[event.data.number].pop()
+}
+
+var detectClick = function(order_of_task) { // when a button is clicked
     // order_of_task can be 0 - 5
     var a = "#image{0} button".format(order_of_task);
     $(a).first().on('click', {number:order_of_task}, addTomato);
+    $(a).first().on('click', {number:order_of_task}, addSubtask);
     $(a).last().on('click', {number:order_of_task}, minusTomato);
+    $(a).last().on('click', {number:order_of_task}, minusSubtask)
+}
+
+var storeData = function(){
+    /*
+    var alert_message_text = '<div class="alert alert-warning alert-dismissable>"\
+    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>\
+    <strong>Warning!</strong>Are you sure?\
+    </div>\
+    '
+    var alert_message = $(alert_message_text); */
+    // TODO
+    alert("Work mode initiated!");
+    localStorage.number_of_tomato = JSON.stringify( number_of_tomato );
+    localStorage.all_subtasks = JSON.stringify( all_subtasks );
 }
 
 $(document).ready( function() {
     for (var i =0; i < number_of_nodes; i++) {
 	detectClick(i);
+	all_subtasks.push([]);
 	number_of_tomato.push(0);
     }
+    $("#goto").on('click', storeData);
 })
