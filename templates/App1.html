@@ -2,6 +2,7 @@
 
 {% extends "template.html" %}
 {% block content %}
+
 <script src="{{url_for('static', filename='js/jquery.min.js')}}"></script>
 <script src="{{url_for('static', filename='js/app1.js')}}"></script>
   <div>
@@ -30,39 +31,22 @@
 	      <script src="../static/js/flipclock/faces/twentyfourhourclock.js"></script>
 	      <script src="../static/js/flipclock/faces/twelvehourclock.js"></script>
 	      <div class="clock"></div>
-	      <script type="text/javascript">
-		var clock;
-
-		$(document).ready(function() {
-		var clock;
-
-		clock = $('.clock').FlipClock(1500, {
-		clockFace: 'MinuteCounter',
-		//autoStart: false
-		countdown: true,
-		callbacks: {
-		stop: function() {
-		}
-		}
-		});
-		});
-	      </script>
 	    </center>
 	  </div>
-
 	  <!-- Button -->
 	  <div class="btn-toolbar" role="toolbar" style="padding-left: 320px;" id="button-group">
 	    <div class="btn-group">
-	      <button type="button" class="btn btn-primary">Next Task</button>
+	      <a class="btn btn-primary" role="button">Next Task</a>
 	    </div>
 	    <div class="btn-group">
-	      <button type="button" class="btn btn-danger">Give Up</button>
+	      <a class="btn btn-danger" href="/giveup" role="button">I Give up!</a>
 	    </div>
 	  </div>
 
 	</div>
       </div>
     </div>
+
 
 <!-- Countdown -->
 

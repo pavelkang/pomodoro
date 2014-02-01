@@ -1,0 +1,43 @@
+{% extends "template.html" %}
+{% block content %}
+<script type="text/javascript" src="//b.scorecardresearch.com/beacon.js"></script>
+<script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
+<script src="{{ url_for('static', filename='js/bootstrap.min.js')}}"></script>
+<script src="{{ url_for('static', filename='js/holder.js')}}"></script>
+    <div class = "jumbotron">
+      <h1>Welcome to Pomodoro</h1>
+      <p>
+	Pomodoro Technique is a time management method developed by Francesco Cirillo.
+	We belive everyone, especially college student, will greatly benefit from it.
+      </p>
+      <p>
+	<a class="btn btn-primary btn-lg" role="button" href="/auth"> Let's Do It </a>
+      </p>
+    </div>
+<div class="row">
+        <div class="col-lg-4">
+          <img class="img-circle" style="width: 140px; height: 140px;" src="https://www.google.com/images/srpr/logo11w.png">
+          <h2>Kai Kang</h2>
+          <p>My name is Kai</p>
+          <p><a class="btn btn-default" href="#" role="button">View details »</a></p>
+        </div><!-- /.col-lg-4 -->
+        <div class="col-lg-4">
+          <img class="img-circle" style="width: 140px; height: 140px;" src="https://www.google.com/images/srpr/logo11w.png">
+          <h2>Jefferey Liu</h2>
+          <p>Yes</p>
+          <p><a class="btn btn-default" href="#" role="button">View details »</a></p>
+        </div><!-- /.col-lg-4 -->
+        <div class="col-lg-4">
+          <img class="img-circle" src="https://www.google.com/images/srpr/logo11w.png">
+          <h2>Hongyu Li</h2>
+          <p>No</p>
+          <p><a class="btn btn-default" href="#" role="button">View details »</a></p>
+        </div><!-- /.col-lg-4 -->
+        <div class="col-lg-4">
+          <img class="img-circle" src="https://www.google.com/images/srpr/logo11w.png">
+          <h2>Alan Wang</h2>
+          <p>No</p>
+          <p><a class="btn btn-default" href="#" role="button">View details »</a></p>
+        </div><!-- /.col-lg-4 -->
+      </div>
+{% endblock %}

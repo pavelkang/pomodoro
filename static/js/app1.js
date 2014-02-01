@@ -15,11 +15,16 @@ var all_subtasks;
 var name_of_nodes;
 var current_task = 0;
 var current_subtask = 0;
+var clock;
+var current_status = 1; // 1 is working; 0 is taking a break
 
-var process = function(list, indices) {
+var work_duration = 5; // in seconds
+var rest_duration = 3;
+
+var process = function(l, indices) {
     var result = [];
     for (var i =0; i< indices.length; i++) {
-	result.push(list[indices[i]]);
+	result.push(l[indices[i]]);
     }
     return result;
 }
@@ -27,14 +32,13 @@ var process = function(list, indices) {
 var getData = function() {
     // get only non-empty data
     var nonEmptyIndices = [];
-    number_of_tomato = JSON.parse(localStorage.number_of_tomato);
-    for (var i=0; i<number_of_tomato.length; i++) {
-	if (number_of_tomato[i] != 0) {
+    pre_number_of_tomato = JSON.parse(localStorage.number_of_tomato);
+    for (var i=0; i<pre_number_of_tomato.length; i++) {
+	if (pre_number_of_tomato[i] != 0) {
 	    nonEmptyIndices.push(i);
 	}
     }
-
-    number_of_tomato = process(number_of_tomato, nonEmptyIndices);
+    number_of_tomato = process(pre_number_of_tomato, nonEmptyIndices);
     pre_name_of_nodes = JSON.parse(localStorage.names);
     name_of_nodes = process(pre_name_of_nodes, nonEmptyIndices); // keep non-empty
     pre_all_subtasks = JSON.parse(localStorage.all_subtasks);
@@ -66,8 +70,58 @@ var create_mainLabel = function(task_number, subtask_number) {
     $(".panel-heading").html(label_text);
 }
 
-var create_description = function(description) {
-    $("h4").html(description);
+var create_description = function(task_number, subtask_number) {
+    var description = all_subtasks[task_number][subtask_number];
+    if (description.length > 0) {
+	$("h4").html(description);
+    }
+}
+
+var labelViaRest = function() {
+    var label_text = "You can take a break";
+    $(".panel-heading").html(label_text);
+}
+
+var descriptionViaRest = function() {
+    $("h4").html("");
+}
+
+var next_task_button = function() {
+    //TODO
+    var max_possible_subtasks = all_subtasks[current_task].length;
+    if ( current_subtask < max_possible_subtasks-1 ) {
+	current_subtask += 1;
+    }
+    else { // finished the current task
+	if (current_task < name_of_nodes.length-1) {
+	    current_task += 1;
+	    current_subtask = 0;
+	}
+    }
+    create_mainLabel(current_task, current_subtask);
+    create_description(current_task, current_subtask);
+}
+
+var give_up_button = function() {
+    1+1;
+}
+
+var clock_stop = function(){
+    current_status = 1- current_status; // change status
+    if ( current_status == 0 ) {
+	// taking a break
+	clock.setTime(rest_duration);
+	clock.start();
+	labelViaRest();
+	descriptionViaRest();
+
+    }
+    else {
+	clock.setTime(work_duration);
+	clock.start();
+	next_task_button();
+    }
+
 }
 
 $(document).ready( function() {
@@ -75,4 +129,17 @@ $(document).ready( function() {
     create_list_group_item();
     activate(current_task);
     create_mainLabel(current_task, current_subtask);
+    // next-task button
+    $("#button-group a").first().on('click', next_task_button);
+    // Give up button
+    $("#button-group a").last().on('click', give_up_button);
+    clock = $(".clock").FlipClock(5, {
+		clockFace: 'MinuteCounter',
+		countdown: true,
+		callbacks: {
+		stop: function() {
+		    clock_stop();
+		}
+		}
+		});
 })

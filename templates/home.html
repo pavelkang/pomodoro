@@ -1,43 +1,149 @@
 {% extends "template.html" %}
 {% block content %}
-<script type="text/javascript" src="//b.scorecardresearch.com/beacon.js"></script>
-<script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
-<script src="{{ url_for('static', filename='js/bootstrap.min.js')}}"></script>
-<script src="{{ url_for('static', filename='js/holder.js')}}"></script>
-    <div class = "jumbotron">
-      <h1>Welcome to Pomodoro</h1>
-      <p>
-	Pomodoro Technique is a time management method developed by Francesco Cirillo.
-	We belive everyone, especially college student, will greatly benefit from it.
-      </p>
-      <p>
-	<a class="btn btn-primary btn-lg" role="button" href="/auth"> Let's Do It </a>
-      </p>
-    </div>
-<div class="row">
-        <div class="col-lg-4">
-          <img class="img-circle" style="width: 140px; height: 140px;" src="https://www.google.com/images/srpr/logo11w.png">
-          <h2>Kai Kang</h2>
-          <p>My name is Kai</p>
-          <p><a class="btn btn-default" href="#" role="button">View details »</a></p>
-        </div><!-- /.col-lg-4 -->
-        <div class="col-lg-4">
-          <img class="img-circle" style="width: 140px; height: 140px;" src="https://www.google.com/images/srpr/logo11w.png">
-          <h2>Jefferey Liu</h2>
-          <p>Yes</p>
-          <p><a class="btn btn-default" href="#" role="button">View details »</a></p>
-        </div><!-- /.col-lg-4 -->
-        <div class="col-lg-4">
-          <img class="img-circle" src="https://www.google.com/images/srpr/logo11w.png">
-          <h2>Hongyu Li</h2>
-          <p>No</p>
-          <p><a class="btn btn-default" href="#" role="button">View details »</a></p>
-        </div><!-- /.col-lg-4 -->
-        <div class="col-lg-4">
-          <img class="img-circle" src="https://www.google.com/images/srpr/logo11w.png">
-          <h2>Alan Wang</h2>
-          <p>No</p>
-          <p><a class="btn btn-default" href="#" role="button">View details »</a></p>
-        </div><!-- /.col-lg-4 -->
+    <!-- Le styles -->
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap-responsive.css')}}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/carousel.css')}}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/justified.css')}}">
+
+    <!-- Fav and touch icons
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="../assets/ico/apple-touch-icon-144-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="../assets/ico/apple-touch-icon-114-precomposed.png">
+      <link rel="apple-touch-icon-precomposed" sizes="72x72" href="../assets/ico/apple-touch-icon-72-precomposed.png">
+                    <link rel="apple-touch-icon-precomposed" href="../assets/ico/apple-touch-icon-57-precomposed.png">
+                                   <link rel="shortcut icon" href="../assets/ico/favicon.png">
+  <style id="holderjs-style" type="text/css">.holderjs-fluid {font-size:16px;font-weight:bold;text-align:center;font-family:sans-serif;margin:0}</style></head> -->
+
+    <div id="myCarousel" class="carousel slide" data-ride="carousel">
+      <!-- Indicators -->
+      <ol class="carousel-indicators">
+	<li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+	<li data-target="#myCarousel" data-slide-to="1" class></li>
+	<li data-target="#myCarousel" data-slide-to="2" class></li>
+	<li data-target="#myCarousel" data-slide-to="3" class></li>
+      </ol>
+
+      <div class="carousel-inner">
+	<div class="item active">
+	  <img src="../static/img/tomato1.png" alt="">
+	  <div class="container">
+	    <div class="carousel-caption">
+	      <h1>Welcome to Pomodoro</h1>
+	      <p>
+		Pomodoro Technique is a time management method developed by Francesco Cirillo. We belive everyone, especially college student, will greatly benefit from it.
+	      </p>
+	      <p style="visibility: hidden;">" "</p>
+	    </div>
+	  </div>
+	</div>
+
+	<div class="item">
+	  <img src="../static/img/evernote.png" alt="">
+	  <div class="container">
+	    <div class="carousel-caption">
+	      <h1>Easy Access to Your To-do List</h1>
+	      <p>
+		You can import your To-do list directly from your Evernote account.
+	      </p>
+	    </div>
+	  </div>
+	</div>
+
+	<div class="item">
+	  <img src="../static/img/gotowork.png" alt="">
+	  <div class="container">
+	    <div class="carousel-caption" style="text-align: left;">
+	      <h2>Set Your Goals and Start to Work!</h2>
+	      <p>
+		Assign specific subtasks for each of your 25 minutes.
+	      </p>
+	    </div>
+	  </div>
+	</div>
+
+	<div class="item">
+	  <img src="../static/img/facebook.png" alt="">
+	  <div class="container">
+	    <div class="carousel-caption">
+	      <h2>Share Your Achievements</h2>
+	      <p>Tell your friends on Facebook how efficient you could be!</p>
+	    </div>
+	  </div>
+	</div>
+	
       </div>
+      
+      <a class="left carousel-control" href="#myCarousel" data-slide="prev">
+	<span class="glyphicon glyphicon-chevron-left"></span>
+      </a>
+      <a class="right carousel-control" href="#myCarousel" data-slide="next">
+	<span class="glyphicon glyphicon-chevron-right"></span>
+      </a>
+    </div>
+
+    <div class="row" style="border-top: 1px solid #bbb; padding-top: 20px; padding-bottom: 20px;">
+      <div class="col-lg-7">
+	<img src="../static/img/screen2.png" alt="">
+      </div>
+      <div class="col-lg-5">
+	<h1>Set Tasks</h1>
+	<p style="font-size: 1.2em;"><strong>The assignments will be automatically added after authorizing your Evernote account.</strong></p>
+	<p style="font-size: 1.2em;"><strong>Each tomato on the left side refers to 25 minutes.</strong></p>
+	<p style="font-size: 1.2em;"><strong>Click "+" and "-" to set the workload you expect.</strong></p>
+	<p style="font-size: 1.2em;"><strong>Click "Go To Work" to start.</strong></p>
+      </div>
+    </div>
+
+    <div class="row" style="border-top: 1px solid #eee; padding-top: 20px; padding-bottom: 20px;">
+      <div class="col-lg-5" style="text-align: right;">
+	<h1>Get Started</h1>
+	<p style="font-size: 1.2em;"><strong>Flip clock helps you manage your time.</strong></p>
+	<p style="font-size: 1.2em;"><strong>The left box shows the task you are now working on.</strong></p>
+	<p style="font-size: 1.2em;"><strong>Click the "Next Task" if you finish the current task early.</strong></p>
+	<p style="font-size: 1.2em;"><strong>Click "Give Up" to stop Pomodoro application.</strong></p>
+      </div>
+      <div class="col-lg-7">
+	<img src="../static/img/screen1.png" alt="">
+      </div>
+    </div>
+
+    <div class="row" style="border-top: 1px solid #eee; padding-top: 20px;">
+      <div class="col-lg-7">
+	
+      </div>
+      <div class="col-lg-5">
+	
+      </div>
+    </div>
+
+    <div class="footer">
+      <p>Presented by Kai Kang, Jianfei Liu, Hongyu Li and Allan Wang.</p>
+    </div>
+
+      
+	
+    <script>
+      !function ($) {
+      $(function(){
+      // carousel demo
+      $('#myCarousel').carousel()
+      })
+      }(window.jQuery)
+    </script>
+
+
+
+    <!-- Le javascript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script type="text/javascript" src="{{url_for('static', filename='js/beacon.j')}}"></script>
+    <script src="{{url_for('static', filename='js/jquery-1.10.2.min.js')}}"></script>
+    <script src="{{url_for('static', filename='js/bootstrap.min.js')}}"></script>
+    <script src="{{url_for('static', filename='js/docs.min.js')}}"></script>
+    <script type="text/javascript">
+      var vglnk = vglnk || {api_url: '//api.viglink.com/api', key: '0dff9ade2d1125af6c910069b6d6e155', reaffiliate: false};
+    </script>
+    <script type="text/javascript" async src="{{url_for('static', filename='js/vglnk.js')}}"></script>
+
 {% endblock %}
+

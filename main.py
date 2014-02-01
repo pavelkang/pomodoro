@@ -38,24 +38,18 @@ def new():
 
 @app.route('/App') # App URL
 def App():
-    messages = ["112", "122", "123", "132", "151"]
-    return render_template('App.html', messages=messages, messages_range=range(len(messages)))
-    """
+    messages = ['112hw', '122lab']
+    # return render_template('App.html', messages=messages, messages_range=range(len(messages)))
     if "oauth_verifier" in request.url:
         authurl = request.url
         auth_token = get_auth_token(request_token, authurl)
         authorize_data = authorize(auth_token)
         session["auth_token"] = authorize_data[1]
-        message = authorize_data[0]
-        try:
-            return render_template('App.html', messages=["112"])#message)
-        except:
-            flash(sys.exc_info()[0])
-            # flash("I am running on Local")
+        messages = authorize_data[0]
     else:
-        pass
-    return render_template('App.html')
-    """
+        return render_template('App.html')
+    return render_template('App.html', messages=messages, messages_range=range(len(messages)))
+
 @app.route('/hello') # hello URL
 @login_required
 def hello():
@@ -68,6 +62,14 @@ def signup():
 @app.route('/App1') # App1 URL
 def App1():
     return render_template('App1.html')
+
+@app.route('/giveup') # App1 URL
+def giveup():
+    return render_template('giveup.html')
+
+@app.route('/finish') # App1 URL
+def finish():
+    return render_template('finish.html')
 
 @app.route('/logout')
 def logout():

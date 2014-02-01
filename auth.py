@@ -21,8 +21,8 @@ def parse_query_string(authorize_url):
     return vals
 
 def get_goto_url():
-    request_token = client_one.get_request_token('http://localhost:5000/App')
-    # request_token = client_one.get_request_token('http://flask-kaikang.appspot.com/App')
+    # request_token = client_one.get_request_token('http://localhost:5000/App')
+    request_token = client_one.get_request_token('http://flask-kaikang.appspot.com/App')
     goto_auth_url = client_one.get_authorize_url(request_token)
     return (goto_auth_url, request_token)
 

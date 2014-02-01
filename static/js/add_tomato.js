@@ -79,7 +79,7 @@ var addNode = function(number) {
     var task_html = '<li>\
       <form class="navbar-form navbar-left" role="search">\
 	<div id="image{0}" class="panel {1}">\
-	  <div class="panel-heading"><h3 class="panel-title">Fundamentals of Cooking</h3></div>\
+	  <div class="panel-heading"><h3 class="panel-title" id="title{0}">{2}</h3></div>\
 	  <div class="panel-body" style="width:150%;">\
 	  <img src="static/img/0.png" />\
 	  <span id="add_tomato" class="btn-group">\
@@ -89,15 +89,21 @@ var addNode = function(number) {
 	    <button type="button" class="btn btn-default" >-</button>\
 	  </span>\
 	  <span id="task_text">\
-	    Specify Task Content:\
+	    Specify Subtask Content:\
 	  </span>\
 	  <input type="text"></input>\
 	  </div>\
 	</div>\
       </form>\
-    </li>'.format(number, "panel-"+colors[number%colors.length]);
+    </li>'.format(number, "panel-"+colors[number%colors.length], name_of_nodes[number]);
     var task = $(task_html);
     $(".space").append(task);
+}
+
+var changeTitle= function(number, new_title) {
+    // change the title to something
+    var text = "#title{0}".format(number);
+    $(text).html(new_title);
 }
 
 var addSubtask = function(event) {
@@ -133,6 +139,7 @@ $(document).ready( function() {
 	detectClick(i);
 	all_subtasks.push([]);
 	number_of_tomato.push(0);
+	changeTitle(i, name_of_nodes[i]);
     }
     $("#show").on('click', storeData);
 })
