@@ -59,9 +59,16 @@ var create_list_group_item = function() {
     }
 }
 
+
+
 var activate = function(task_number){
     var task_to_act_text = '#task{0}'.format(task_number);
     $(task_to_act_text).attr('class', 'list-group-item active');
+}
+
+var deactivate = function(task_number){
+    var task_to_act_text = '#task{0}'.format(task_number);
+    $(task_to_act_text).attr('class', 'list-group-item');
 }
 
 var create_mainLabel = function(task_number, subtask_number) {
@@ -96,6 +103,8 @@ var next_task_button = function() {
 	if (current_task < name_of_nodes.length-1) {
 	    current_task += 1;
 	    current_subtask = 0;
+	    activate(current_task);
+	    if (current_task != 0) { deactivate(current_task-1);}
 	}
     }
     create_mainLabel(current_task, current_subtask);
@@ -108,13 +117,14 @@ var give_up_button = function() {
 
 var clock_stop = function(){
     current_status = 1- current_status; // change status
+    activate(current_task);
+    if (current_task != 0) { deactivate(current_task-1);}
     if ( current_status == 0 ) {
 	// taking a break
 	clock.setTime(rest_duration);
 	clock.start();
 	labelViaRest();
 	descriptionViaRest();
-
     }
     else {
 	clock.setTime(work_duration);
@@ -127,7 +137,7 @@ var clock_stop = function(){
 $(document).ready( function() {
     getData();
     create_list_group_item();
-    activate(current_task);
+    activate(0);
     create_mainLabel(current_task, current_subtask);
     // next-task button
     $("#button-group a").first().on('click', next_task_button);
