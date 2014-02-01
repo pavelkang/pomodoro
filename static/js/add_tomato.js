@@ -77,10 +77,9 @@ var minusTomato = function(event) {
 
 var addNode = function(number) {
     var task_html = '<li>\
-      <form class="navbar-form navbar-left" role="search">\
 	<div id="image{0}" class="panel {1}">\
 	  <div class="panel-heading"><h3 class="panel-title" id="title{0}">{2}</h3></div>\
-	  <div class="panel-body" style="width:150%;">\
+	  <div class="panel-body">\
 	  <img src="static/img/0.png" />\
 	  <span id="add_tomato" class="btn-group">\
 	    <button type="button" class="btn btn-default" >+</button>\
@@ -94,7 +93,6 @@ var addNode = function(number) {
 	  <input type="text"></input>\
 	  </div>\
 	</div>\
-      </form>\
     </li>'.format(number, "panel-"+colors[number%colors.length], name_of_nodes[number]);
     var task = $(task_html);
     $(".space").append(task);

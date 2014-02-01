@@ -1,19 +1,9 @@
 {% extends "template.html" %}
 {% block content %}
     <!-- Le styles -->
-
     <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap-responsive.css')}}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/carousel.css')}}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/justified.css')}}">
-
-    <!-- Fav and touch icons
-    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="../assets/ico/apple-touch-icon-144-precomposed.png">
-    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="../assets/ico/apple-touch-icon-114-precomposed.png">
-      <link rel="apple-touch-icon-precomposed" sizes="72x72" href="../assets/ico/apple-touch-icon-72-precomposed.png">
-                    <link rel="apple-touch-icon-precomposed" href="../assets/ico/apple-touch-icon-57-precomposed.png">
-                                   <link rel="shortcut icon" href="../assets/ico/favicon.png">
-  <style id="holderjs-style" type="text/css">.holderjs-fluid {font-size:16px;font-weight:bold;text-align:center;font-family:sans-serif;margin:0}</style></head> -->
-
     <div id="myCarousel" class="carousel slide" data-ride="carousel">
       <!-- Indicators -->
       <ol class="carousel-indicators">
@@ -70,9 +60,9 @@
 	    </div>
 	  </div>
 	</div>
-	
+
       </div>
-      
+
       <a class="left carousel-control" href="#myCarousel" data-slide="prev">
 	<span class="glyphicon glyphicon-chevron-left"></span>
       </a>
@@ -109,10 +99,10 @@
 
     <div class="row" style="border-top: 1px solid #eee; padding-top: 20px;">
       <div class="col-lg-7">
-	
+
       </div>
       <div class="col-lg-5">
-	
+
       </div>
     </div>
 
@@ -120,8 +110,8 @@
       <p>Presented by Kai Kang, Jianfei Liu, Hongyu Li and Allan Wang.</p>
     </div>
 
-      
-	
+
+
     <script>
       !function ($) {
       $(function(){
@@ -146,4 +136,3 @@
     <script type="text/javascript" async src="{{url_for('static', filename='js/vglnk.js')}}"></script>
 
 {% endblock %}
-

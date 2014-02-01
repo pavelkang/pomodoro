@@ -28,18 +28,10 @@ def home():
 def laopo():
     return render_template('laopo.html')
 
-@app.route('/test') # test URL
-def test():
-    return render_template('test.html')
-
-@app.route('/new')
-def new():
-    return render_template('new.html')
-
 @app.route('/App') # App URL
 def App():
     messages = ['112hw', '122lab']
-    return render_template('App.html', messages=messages, messages_range=range(len(messages)))
+    # return render_template('App.html', messages=messages, messages_range=range(len(messages)))
     if "oauth_verifier" in request.url:
         authurl = request.url
         auth_token = get_auth_token(request_token, authurl)
@@ -48,7 +40,7 @@ def App():
         messages = authorize_data[0]
     else:
         return render_template('App.html')
-    # return render_template('App.html', messages=messages, messages_range=range(len(messages)))
+    return render_template('App.html', messages=messages, messages_range=range(len(messages)))
 
 @app.route('/hello') # hello URL
 @login_required

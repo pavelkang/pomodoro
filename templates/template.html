@@ -14,20 +14,28 @@
 		{% else %}
 		  <li><a href="/">Home</a></li>
 		{% endif %}
+
 		{% if request.url[-3:] == "App" %}
 		  <li class="active"><a href="/">App</a></li>
 		{% else %}
 		  <li><a href="/App">App</a></li>
 		{% endif %}
+
 		{% if request.url[-3:] == "log" %}
 		  <li class="active"><a href="/">Log in</a></li>
 		{% else %}
 		  <li><a href="/log">Log in</a></li>
 		{% endif %}
+
+
+		{% if request.url[-3:] == "nup" %}
+		  <li class="active"><a href="/">Sign Up</a></li>
+		{% else %}
+		  <li><a href="/signup">Signup</a></li>
+		{% endif %}
+
 		<li><a href="/auth">Evernote</a></li>
-		<li><a href="/test">Test</a></li>
-		<li><a href="/new">Carousel</a></li>
-		<li><a href="/signup">Signup</a></li>
+
 	      </ul>
 	  </div>
 	</header>
