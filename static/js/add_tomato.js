@@ -1,7 +1,5 @@
 /*
-  Author: Kai Kang
-  *** This is all hardcode right now !!! */
-
+  Author: Kai Kang */
 String.prototype.format = String.prototype.f = function() {
     var s = this,
         i = arguments.length;
@@ -23,6 +21,7 @@ function preload(arrayOfImages) {
     }
 
 var number_of_tomato = []; // stores as a 2-D list
+var name_of_nodes = [];
 var all_subtasks = [];  // stores as a 2-D list
 var number_of_nodes = 0;  // number of tasks
 var img0 = "static/img/0.png";
@@ -34,6 +33,10 @@ var img5 = "static/img/5.png";
 var colors = ["blue", "red", "green", "yellow", "lightblue"]; //Hongyu will update this
 // Preload all the images
 preload([img0, img1, img2, img3, img4, img5]);
+
+var addName = function(name){
+    name_of_nodes.push(name);
+}
 
 var changeImage = function(number_of_tomato, order_of_task) {
     var objToChange = "#image{0} img".format(order_of_task)
@@ -120,17 +123,9 @@ var detectClick = function(order_of_task) { // when a button is clicked
 }
 
 var storeData = function(){
-    /*
-    var alert_message_text = '<div class="alert alert-warning alert-dismissable>"\
-    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>\
-    <strong>Warning!</strong>Are you sure?\
-    </div>\
-    '
-    var alert_message = $(alert_message_text); */
-    // TODO
-    alert("Work mode initiated!");
     localStorage.number_of_tomato = JSON.stringify( number_of_tomato );
     localStorage.all_subtasks = JSON.stringify( all_subtasks );
+    localStorage.names = JSON.stringify( name_of_nodes );
 }
 
 $(document).ready( function() {
@@ -139,5 +134,5 @@ $(document).ready( function() {
 	all_subtasks.push([]);
 	number_of_tomato.push(0);
     }
-    $("#goto").on('click', storeData);
+    $("#show").on('click', storeData);
 })

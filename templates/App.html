@@ -1,27 +1,20 @@
 <!-- Declare all the variables -->
 <script src="{{url_for('static', filename='js/jquery.min.js')}}"></script>
 <script src="{{url_for('static', filename='js/add_tomato.js')}}"></script>
+<link href='http://fonts.googleapis.com/css?family=Headland+One|Open+Sans:400,300&subset=latin,cyrillic' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" href="http://labs.voronianski.com/media/style/reset.css">
+<link rel="stylesheet" href="static/css/style.css">
+<link rel="stylesheet" href="static/css/avgrund.css">
+<script src="static/js/jquery.avgrund.js"></script>
 {% extends "template.html" %}
 {% block content %}
-    <h2>Pomodoro App</h2>
-    <!--
-    {% if message %}
-    {% for info in message %}
-    <h1>{{ info }}</h1>
-    {% endfor %}
-    {% endif %}-->
 
-    {%set tomato_left = "40%" %}
-    {%set tomato_top = "20%" %}
-    {%set add_tomato_left = "50%" %}
-    <!--
-    <span id="add_task">
-      <button type="button" class="btn btn-defau lt" >Add Task</button>
-    </span>
-    <script type="text/javascript">
-      addMultipleNodes();
-    </script>-->
-
+<h2>Pomodoro App</h2>
+{% for message in messages %}
+<script type="text/javascript">
+  addName({{message}});
+</script>
+{% endfor %}
 <ul class="space" style="list-style-type: none;">
   {% for message in messages_range %}
   <script type="text/javascript">
@@ -31,5 +24,24 @@
   {% endfor %}
 </ul>
 <!-- Go to App1.html -->
-<a class="btn btn-lg btn-success" href="/App1" role="button" id="goto">Get To Work!</a>
+<div class="buttons">
+  <a href="#" id="show" class="button left">Get To Work!</a>
+</div>
+
+<script>
+  $(function() {
+  $('#show').avgrund({
+  height: 200,
+  holderClass: 'custom',
+  showClose: true,
+  showCloseText: 'close',
+  onBlurContainer: '.container',
+  template: '<p> Have you completed assigning subtasks?</p>' +
+  '<div>' +
+    '<a href="/App1" target="_blank" class="github">Sure!</a>' +
+    '<a href="#" target="_blank" class="twitter">No</a>' +
+    '</div>'
+  });
+  });
+</script>
 {% endblock %}

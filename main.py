@@ -38,7 +38,7 @@ def new():
 
 @app.route('/App') # App URL
 def App():
-    messages = ["112", "122", "123", "132"]
+    messages = ["112", "122", "123", "132", "151"]
     return render_template('App.html', messages=messages, messages_range=range(len(messages)))
     """
     if "oauth_verifier" in request.url:

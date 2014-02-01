@@ -70,6 +70,7 @@ var create_description = function(description) {
     $("h4").html(description);
 }
 
+
 $(document).ready( function() {
     getData();
     create_list_group_item();

@@ -4,32 +4,18 @@
 {% block content %}
 <script src="{{url_for('static', filename='js/jquery.min.js')}}"></script>
 <script src="{{url_for('static', filename='js/app1.js')}}"></script>
-  {% if get_flashed_messages() %}
-  {% for message in get_flashed_messages() %}
-    <div class=flash>
-      {{ message }}
-    </div>
-  {% endfor %}
-  {% endif %}
   <div>
     <div class="col-md-2" style="padding-top: 20px;">
-      <div class="list-group" style="width: 200px;">
-	<a class="list-group-item active">
-	  15-122 Lab 2
-	</a>
-	<a class="list-group-item">21-127 Assignment 3</a>
-	<a class="list-group-item">24-101 Homework 3</a>
-	<a class="list-group-item">15-122 Theory 3</a>
-	<a class="list-group-item">82-141 Leccion 3</a>
+      <div class="list-group" style="width: 200px;" id="list_group">
+	<!-- insert here -->
       </div>
     </div>
 
     <div class="col-md-10" style="padding-left: 50px; padding-top: 20px;">
       <div class="panel panel-blue">
-	<div class="panel-heading" style="font-size: 30px;">Task 1</div>
+	<div class="panel-heading" style="font-size: 30px;"></div>
 	<div class="panel-body">
-	  <h4>Description: Review class notes</h4>
-
+	  <h4></h4>
 	  <!-- Flipclock -->
 	  <div class="countdown" style="padding-top: 10px; padding-left: 250px;">
 	    <center>
@@ -65,7 +51,7 @@
 	  </div>
 
 	  <!-- Button -->
-	  <div class="btn-toolbar" role="toolbar" style="padding-left: 320px;">
+	  <div class="btn-toolbar" role="toolbar" style="padding-left: 320px;" id="button-group">
 	    <div class="btn-group">
 	      <button type="button" class="btn btn-primary">Next Task</button>
 	    </div>
