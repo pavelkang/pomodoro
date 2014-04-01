@@ -5,6 +5,11 @@ from functools import wraps
 import sys, os
 sys.path.append(os.path.join(os.path.dirname(__file__), 'lib'))
 from auth import *
+import estimate, execute
+
+import facebook
+import fbBasicOps as fbOP
+import fbAuth
 
 app = Flask(__name__)
 app.secret_key = 'admin'
@@ -61,7 +66,14 @@ def giveup():
 
 @app.route('/finish') # App1 URL
 def finish():
-    return render_template('finish.html')
+    fb_url = fbAuth.get_goto_url()
+    auth_url = ""
+    if "?code=" in request.url:
+        auth_url = request.url
+        RAWauthtoken = fbAuth.get_auth_token(request.url)
+        authtoken = RAWauthtoken['access_token']
+        fbOP.postFacebook(authtoken,"I have finished a task on Pomodoro! It is fun!")
+    return render_template('finish.html', fb_url=fb_url, auth_url=auth_url)
 
 @app.route('/logout')
 def logout():
@@ -74,6 +86,10 @@ def auth():
     url = None
     return render_template('auth.html', url=goto_auth_url)
 
+@app.route('/love')
+def love():
+    return "I miss you so much/n"
+
 @app.route('/log', methods=['GET','POST'])
 def log():
     error = None
@@ -85,5 +101,21 @@ def log():
             return redirect(url_for('hello'))
     return render_template('log.html', error=error)
 
+@app.route('/cobot', methods=['GET', 'POST']) # cobot URL
+def cobot():
+    # return "40,40"
+    error = None
+    info = None
+    if request.method == 'POST':
+        if request.form['username'].startswith("cobot"):
+            print "HANDLIING POST REQUEST FROM PHONE"
+            info = request.form['username'][5:]
+            return estimate.main(info)
+        if request.form['username'].startswith("sendCobot"):
+            print "Sending signal to Cobot ..."
+            info = request.form['username'][9:]
+            return execute.main(info)
+    return render_template('cobot.html', cobot=info)
+
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(host="128.237.237.136")

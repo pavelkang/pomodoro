@@ -12,8 +12,9 @@ SECRET_KEY = 'development key'
 DEBUG = True
 FACEBOOK_APP_ID = '704355656271613'
 FACEBOOK_APP_SECRET = '0d6d5783fe7e575fa9e280fda7e730e1'
-REDIRECT_URI = 'http://127.0.0.1:5000/new'
-# REDIRECT_URI = 'http://flask-kaikang.appspot.com/new'
+# REDIRECT_URI = 'http://127.0.0.1:5000/new'
+REDIRECT_URI = 'http://flask-kaikang.appspot.com/finish'
+# REDIRECT_URI = 'http://localhost:5000/finish'
 
 def get_goto_url():
     args = dict(client_id=FACEBOOK_APP_ID, redirect_uri=REDIRECT_URI,scope='publish_stream')
@@ -71,4 +72,3 @@ def get_auth_token(auth_url):
     ACCESS_TOKEN = get_access_token_from_code(code,REDIRECT_URI,FACEBOOK_APP_ID,FACEBOOK_APP_SECRET)
 
     return ACCESS_TOKEN
-

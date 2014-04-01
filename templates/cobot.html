@@ -1,10 +1,17 @@
 {% extends "template.html" %}
+  <head>
+    <title> Evernote </title>
+  </head>
+
 {% block content %}
-  <h1>Login</h1>
-  {% if error %}
+
+  {% if cobot %}
     <p class=error><strong>Error:</strong> {{ error }}
   {% endif %}
-  <form action="" method=post>
+
+  <h1 style="color:#444444;border-radius:10px;" > Cobot Server </h1>
+  <!-- if there is a post request, flash the message "hey"-->
+    <form action="" method=post>
     <dl>
       <dt>Username:
 	<dd><input type=text name=username value="{{ request.form.username }}">
@@ -12,12 +19,12 @@
       <dd><input type=password name=password>
     </dl>
     <p><input type=submit value=Login>
-  </form>
-  {% if get_flashed_messages() %}
+    </form>
+
   {% for message in get_flashed_messages() %}
     <div class=flash>
       {{ message }}
     </div>
   {% endfor %}
-  {% endif %}
+
 {% endblock %}

@@ -6,7 +6,14 @@
   <p>
     Share your experience with your friends on Facebook.
   </p>
-  <p><a class="btn btn-primary btn-lg" role="button">Share on Facebook</a></p>
+  <p><a class="btn btn-primary btn-lg" href="{{fb_url}}" role="button">Share on Facebook</a></p>
+
+  {% if auth_url %}
+  <p>
+    Successfully posted on Facebook.
+  </p>
+  {% endif %}
+
 </div>
 
 
